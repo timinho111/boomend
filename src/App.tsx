@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { APIData, Lead } from '../api/Models';
+import { APIData, Lead, Team } from '../api/Models';
 
 const App: React.FC = () => {
     const [state, setState] = useState({
-        data: {} as APIData,
+        data: {} as Team,
         loaded: false,
         placeholder: 'loading',
     });
 
     useEffect(() => {
         axios
-            .get('/api/lead')
+            .get('/api/hello')
             .then((response) => {
                 if (response.status > 400) {
                     setState((prevState) => ({
@@ -34,10 +34,10 @@ const App: React.FC = () => {
         <>
             {state.loaded && (
                 <ul>
-                    {state.data.results.map((contact: Lead) => {
+                    {state.data.squad.map((player) => {
                         return (
-                            <li key={contact.id}>
-                                {contact.name} - {contact.email}
+                            <li key={player.id}>
+                                {player.firstName} {player.lastName}
                             </li>
                         );
                     })}

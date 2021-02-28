@@ -11,3 +11,36 @@ export type Lead = {
     email: string;
     message: string;
 };
+
+export type Area = {
+    id: number;
+    name: string;
+};
+
+export type Player = {
+    id: number;
+    name: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
+    countryOfBirth: string;
+    position: string;
+    lastUpdated: string;
+};
+
+export type Team = {
+    id: number;
+    area: Area;
+    name: string;
+    shortName: string;
+    tla: string;
+    crestUrl: string;
+    address: string;
+    phone: string;
+    website: string;
+    email: string;
+    founded: string;
+    clubColors: string;
+    venue: string;
+    squad: Player[];
+};
