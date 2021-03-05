@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { APIData, Lead, Team } from '../api/Models';
+import { Player } from '../api/Models';
 
 const App: React.FC = () => {
     const [state, setState] = useState({
-        data: {} as Team,
+        data: [] as Player[],
         loaded: false,
         placeholder: 'loading',
     });
@@ -22,9 +22,10 @@ const App: React.FC = () => {
                 return response;
             })
             .then((response) => {
+                console.log(response.data.response);
                 setState((prevState) => ({
                     ...prevState,
-                    data: response.data,
+                    data: response.data.response,
                     loaded: true,
                 }));
             });
@@ -34,12 +35,8 @@ const App: React.FC = () => {
         <>
             {state.loaded && (
                 <ul>
-                    {state.data.squad.map((player) => {
-                        return (
-                            <li key={player.id}>
-                                {player.firstName} {player.lastName}
-                            </li>
-                        );
+                    {state.data.map((player) => {
+                        return <li key={player.player.id}>{player.player.name}</li>;
                     })}
                 </ul>
             )}

@@ -18,14 +18,19 @@ export type Area = {
 };
 
 export type Player = {
-    id: number;
-    name: string;
-    firstName: string;
-    lastName: string;
-    dateOfBirth: string;
-    countryOfBirth: string;
-    position: string;
-    lastUpdated: string;
+    player: {
+        id: number;
+        name: string;
+        firstName: string;
+        lastName: string;
+        age: number;
+        nationality: string;
+        height: string;
+        weight: string;
+        injured: boolean;
+        photo: string;
+        lastUpdated: string;
+    };
 };
 
 export type Team = {
