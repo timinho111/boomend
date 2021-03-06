@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         axios
-            .get('/api/hello')
+            .get('/api/players')
             .then((response) => {
                 if (response.status > 400) {
                     setState((prevState) => ({
@@ -22,10 +22,10 @@ const App: React.FC = () => {
                 return response;
             })
             .then((response) => {
-                console.log(response.data.response);
+                console.log(response.data);
                 setState((prevState) => ({
                     ...prevState,
-                    data: response.data.response,
+                    data: response.data,
                     loaded: true,
                 }));
             });
@@ -36,7 +36,7 @@ const App: React.FC = () => {
             {state.loaded && (
                 <ul>
                     {state.data.map((player) => {
-                        return <li key={player.player.id}>{player.player.name}</li>;
+                        return <li key={player.name}>{player.name}</li>;
                     })}
                 </ul>
             )}
